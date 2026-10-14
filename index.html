@@ -156,6 +156,16 @@
         color: var(--ink) !important;
       }
 
+      .nav-confluence {
+        background: var(--adesso-blue);
+        color: var(--white) !important;
+        white-space: nowrap;
+      }
+
+      .nav-confluence:hover {
+        background: var(--adesso-blue-hover);
+      }
+
       .hero {
         position: relative;
         overflow: hidden;
@@ -593,11 +603,11 @@
         background: var(--ice-blue);
       }
 
-      .hotel-cards {
+      .hotel-layout {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 1rem;
-        margin-bottom: 1.5rem;
+        grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+        align-items: start;
+        gap: 1.5rem;
       }
 
       .hotel-card {
@@ -606,30 +616,12 @@
         align-items: stretch;
         gap: 1rem;
         padding: clamp(1.5rem, 3vw, 2rem);
-        border: 2px solid transparent;
+        border: 2px solid var(--adesso-blue);
         border-radius: var(--radius-md);
-        background: var(--white);
+        background: #f6fbff;
         color: var(--ink);
         text-align: left;
         font: inherit;
-        cursor: pointer;
-        box-shadow: 0 0.5rem 2rem rgba(11, 22, 39, 0.04);
-        transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
-      }
-
-      .hotel-card:hover {
-        transform: translateY(-4px);
-        border-color: #9cc9ea;
-      }
-
-      .hotel-card:focus-visible {
-        outline: 3px solid var(--adesso-blue);
-        outline-offset: 4px;
-      }
-
-      .hotel-card[aria-pressed="true"] {
-        border-color: var(--adesso-blue);
-        background: #f6fbff;
         box-shadow: 0 0.75rem 2rem rgba(0, 110, 199, 0.12);
       }
 
@@ -645,6 +637,7 @@
 
       .hotel-name {
         display: block;
+        margin: 0;
         font-size: 1.6rem;
         letter-spacing: -0.03em;
         line-height: 1.2;
@@ -674,14 +667,8 @@
         line-height: 1.2;
       }
 
-      .hotel-walk span,
-      .hotel-card-state {
+      .hotel-walk span {
         font-size: 0.875rem;
-      }
-
-      .hotel-card-state {
-        color: var(--adesso-blue-dark);
-        font-weight: 800;
       }
 
       .hotel-route {
@@ -750,6 +737,310 @@
       .hotel-note a {
         color: var(--adesso-blue-dark);
         text-underline-offset: 0.2em;
+      }
+
+      .food-guide {
+        background: var(--white);
+      }
+
+      .food-toolbar,
+      .food-filters {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.65rem;
+      }
+
+      .food-toolbar {
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1.75rem;
+      }
+
+      .food-filter,
+      .food-close {
+        padding: 0.7rem 1rem;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--white);
+        color: var(--ink);
+        font: inherit;
+        font-size: 0.9rem;
+        font-weight: 750;
+        cursor: pointer;
+      }
+
+      .food-filter[aria-pressed="true"] {
+        border-color: var(--adesso-blue);
+        background: var(--adesso-blue);
+        color: var(--white);
+      }
+
+      .food-count,
+      .food-note {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.875rem;
+      }
+
+      .food-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        align-items: start;
+        gap: 1rem;
+      }
+
+      .food-card {
+        min-height: 12.5rem;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+        padding: 1.5rem;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        background: var(--paper);
+        color: var(--ink);
+        text-align: left;
+        font: inherit;
+        cursor: pointer;
+        transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+      }
+
+      .food-card:hover,
+      .food-card[aria-expanded="true"] {
+        border-color: var(--adesso-blue);
+        background: var(--ice-blue);
+        box-shadow: 0 0.5rem 1.5rem rgba(0, 110, 199, 0.08);
+      }
+
+      .food-card:focus-visible,
+      .food-filter:focus-visible,
+      .food-close:focus-visible {
+        outline: 3px solid var(--adesso-blue);
+        outline-offset: 4px;
+      }
+
+      .food-card-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+
+      .food-tag {
+        padding: 0.2rem 0.6rem;
+        border-radius: 999px;
+        background: var(--white);
+        color: var(--adesso-blue-dark);
+        font-size: 0.73rem;
+        font-weight: 800;
+      }
+
+      .food-tag-bar {
+        background: #f4efcb;
+        color: #665d00;
+      }
+
+      .food-card-name {
+        font-size: 1.3rem;
+        font-weight: 850;
+        line-height: 1.2;
+        letter-spacing: -0.03em;
+      }
+
+      .food-card-tip {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .food-card-action {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: auto;
+        padding-top: 0.5rem;
+        color: var(--adesso-blue-dark);
+        font-size: 0.85rem;
+        font-weight: 800;
+      }
+
+      .food-card-arrow {
+        font-size: 1.35rem;
+      }
+
+      .food-card[aria-expanded="true"] .food-card-arrow {
+        transform: rotate(90deg);
+      }
+
+      .food-detail {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        background: var(--white);
+        box-shadow: var(--shadow);
+        scroll-margin-top: 6.5rem;
+      }
+
+      .food-detail[hidden] {
+        display: none;
+      }
+
+      .food-detail:focus-visible {
+        outline: 2px solid var(--adesso-blue);
+        outline-offset: 4px;
+      }
+
+      .food-visual {
+        position: relative;
+        min-height: 25rem;
+        margin: 0;
+        display: grid;
+        align-content: center;
+        justify-items: center;
+        gap: 0.75rem;
+        padding: 2rem;
+        background: linear-gradient(145deg, var(--ink), var(--adesso-blue-dark));
+        color: var(--white);
+        text-align: center;
+      }
+
+      .food-visual img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .food-photo-icon {
+        font-size: 3rem;
+      }
+
+      .food-photo-status {
+        max-width: 25ch;
+        font-weight: 750;
+      }
+
+      .food-photo-credit {
+        position: absolute;
+        z-index: 1;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 0.8rem 1rem;
+        background: rgba(11, 22, 39, 0.84);
+        font-size: 0.75rem;
+      }
+
+      .food-detail-copy {
+        min-width: 0;
+        padding: clamp(1.4rem, 3vw, 2.5rem);
+      }
+
+      .food-detail-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .food-detail-top .section-number {
+        margin: 0;
+        font-size: 0.72rem;
+      }
+
+      .food-close {
+        flex-shrink: 0;
+        padding: 0.45rem 0.75rem;
+        font-size: 0.8rem;
+      }
+
+      .food-detail h3 {
+        margin-bottom: 0.8rem;
+        font-size: clamp(1.7rem, 3vw, 2.4rem);
+        letter-spacing: -0.04em;
+        line-height: 1.1;
+      }
+
+      .food-detail-description {
+        color: var(--muted);
+      }
+
+      .food-detail h4 {
+        margin: 1.25rem 0 0.6rem;
+        font-size: 0.9rem;
+      }
+
+      .food-highlights {
+        display: grid;
+        gap: 0.45rem;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+
+      .food-highlights li::before {
+        content: "↗";
+        margin-right: 0.7rem;
+        color: var(--adesso-blue);
+        font-weight: 850;
+      }
+
+      .food-practical {
+        display: grid;
+        gap: 0.65rem;
+        margin: 1.4rem 0;
+        font-size: 0.875rem;
+      }
+
+      .food-practical div {
+        padding-top: 0.65rem;
+        border-top: 1px solid var(--line);
+      }
+
+      .food-practical dt {
+        font-weight: 800;
+      }
+
+      .food-practical dd {
+        margin: 0.2rem 0 0;
+        color: var(--muted);
+      }
+
+      .food-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.65rem;
+      }
+
+      .food-links .button {
+        min-height: 2.75rem;
+        padding: 0.65rem 0.9rem;
+        font-size: 0.85rem;
+      }
+
+      .food-note {
+        max-width: 100ch;
+        margin-top: 1.75rem;
+      }
+
+      @media (max-width: 1050px) {
+        .food-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      }
+
+      @media (max-width: 700px) {
+        .food-grid,
+        .food-detail { grid-template-columns: 1fr; }
+        .food-card { min-height: 11rem; }
+        .food-visual { min-height: 16rem; }
+        .food-detail-top { align-items: flex-start; }
+        .food-links { flex-direction: column; }
       }
 
       .interaction-card {
@@ -1173,7 +1464,7 @@
       }
 
       @media (max-width: 850px) {
-        .nav-links a:not(.nav-cta) {
+        .nav-links a:not(.nav-confluence) {
           display: none;
         }
 
@@ -1214,7 +1505,7 @@
           grid-template-columns: 1fr;
         }
 
-        .hotel-cards {
+        .hotel-layout {
           grid-template-columns: 1fr;
         }
 
@@ -1241,6 +1532,18 @@
       @media (max-width: 600px) {
         .nav {
           min-height: 4.25rem;
+          gap: 0.75rem;
+        }
+
+        .brand {
+          min-width: 0;
+          white-space: normal;
+          line-height: 1.2;
+        }
+
+        .brand-mark,
+        .nav-links {
+          flex-shrink: 0;
         }
 
         .nav-cta {
@@ -1322,9 +1625,16 @@
         </a>
         <div class="nav-links">
           <a href="#ort">Ort</a>
-          <a href="#hotels">Hotels</a>
+          <a href="#hotels">Hotel</a>
           <a href="#anreise">Anreise</a>
+          <a href="#essen">Essen &amp; Afterwork</a>
           <a class="nav-cta" href="#infos">Infos &amp; Updates</a>
+          <a
+            class="nav-cta nav-confluence"
+            href="https://confluence.adesso.de/spaces/OCS/pages/1124796483/23.11+-+27.11.2026+Work+Meet+-+Augsburg"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Zu Confluence</a>
         </div>
       </nav>
     </header>
@@ -1482,7 +1792,7 @@
                 </div>
                 <div class="completion-track" id="readyProgress" role="progressbar" aria-label="Vorbereitung abgeschlossen" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="completion-bar" id="completionBar"></div></div>
                 <div class="ready-readout"><strong id="completionValue" role="status" aria-live="polite">0%</strong><button class="mini-button" id="resetChecklist" type="button">Zurücksetzen</button></div>
-                <p class="ready-note">Eure Häkchen bleiben in diesem Browser gespeichert. <a href="#hotels">Hotels in der Nähe ansehen</a>.</p>
+                <p class="ready-note">Eure Häkchen bleiben in diesem Browser gespeichert. <a href="#hotels">Hotel und Fußweg ansehen</a>.</p>
               </div>
               <aside class="carpool-card" aria-labelledby="carpoolTitle">
                 <span class="card-kicker">Fahrgemeinschaften</span>
@@ -1505,56 +1815,38 @@
           <div class="section-heading reveal">
             <p class="section-number">03 · Übernachten</p>
             <div>
-              <h2 id="hotels-title">Übernachten in der Nähe.</h2>
-              <p class="section-intro">Drei Hotels, von denen ihr die Geschäftsstelle zu Fuß erreicht. Wählt eine Karte aus – Google Maps zeigt euch den passenden Weg bis zur Villa 1.</p>
+              <h2 id="hotels-title">Unser Hotel in Augsburg.</h2>
+              <p class="section-intro">Für das Work &amp; Meet haben wir uns auf das Holiday Inn Express Augsburg festgelegt. Google Maps zeigt euch den Fußweg zur Geschäftsstelle in Villa 1.</p>
             </div>
           </div>
 
-          <div class="hotel-cards reveal" role="group" aria-label="Hotel für den Fußweg zur Geschäftsstelle auswählen">
-            <button class="hotel-card" type="button" data-hotel="express" aria-pressed="true" aria-controls="hotelMap" aria-label="Fußweg vom Holiday Inn Express Augsburg zur Geschäftsstelle anzeigen">
+          <div class="hotel-layout">
+            <article class="hotel-card reveal" aria-labelledby="hotel-name">
               <span class="hotel-area">Textilviertel</span>
-              <strong class="hotel-name">Holiday Inn Express Augsburg</strong>
+              <h3 class="hotel-name" id="hotel-name">Holiday Inn Express Augsburg</h3>
               <span class="hotel-address">Nagahama-Allee 77<br />86153 Augsburg</span>
               <span class="hotel-description">Frühstück inklusive und ein kurzer Fußweg ins Office.</span>
               <span class="hotel-walk"><strong>8 Min.</strong><span>ca. 550 m zu Fuß</span></span>
-              <span class="hotel-card-state">Route ausgewählt</span>
-            </button>
-            <button class="hotel-card" type="button" data-hotel="jakoberhof" aria-pressed="false" aria-controls="hotelMap" aria-label="Fußweg vom Hotel Jakoberhof zur Geschäftsstelle anzeigen">
-              <span class="hotel-area">Bei der Fuggerei</span>
-              <strong class="hotel-name">Hotel Jakoberhof</strong>
-              <span class="hotel-address">Jakoberstraße 41<br />86152 Augsburg</span>
-              <span class="hotel-description">Familiengeführtes Hotel in der Altstadt, gegenüber der Fuggerei.</span>
-              <span class="hotel-walk"><strong>19 Min.</strong><span>ca. 1,3 km zu Fuß</span></span>
-              <span class="hotel-card-state">Route anzeigen</span>
-            </button>
-            <button class="hotel-card" type="button" data-hotel="maximilians" aria-pressed="false" aria-controls="hotelMap" aria-label="Fußweg vom Hotel Maximilian’s zur Geschäftsstelle anzeigen">
-              <span class="hotel-area">Maximilianstraße</span>
-              <strong class="hotel-name">Hotel Maximilian’s</strong>
-              <span class="hotel-address">Maximilianstraße 40<br />86150 Augsburg</span>
-              <span class="hotel-description">5-Sterne-Superior-Hotel mitten in der historischen Innenstadt.</span>
-              <span class="hotel-walk"><strong>21 Min.</strong><span>ca. 1,5 km zu Fuß</span></span>
-              <span class="hotel-card-state">Route anzeigen</span>
-            </button>
-          </div>
+            </article>
 
-          <div class="hotel-route reveal">
-            <div class="hotel-route-header">
-              <div aria-live="polite" aria-atomic="true">
-                <p class="section-number">Euer Weg ins Office</p>
-                <h3 id="hotelRouteTitle">Holiday Inn Express Augsburg → adesso</h3>
-                <p id="hotelRouteSummary">Ca. 8 Minuten · 550 m zu Fuß · Ziel: Provinostraße 52, Villa 1</p>
+            <div class="hotel-route reveal">
+              <div class="hotel-route-header">
+                <div>
+                  <p class="section-number">Euer Weg ins Office</p>
+                  <h3 id="hotelRouteTitle">Holiday Inn Express Augsburg → adesso</h3>
+                  <p id="hotelRouteSummary">Ca. 8 Minuten · 550 m zu Fuß · Ziel: Provinostraße 52, Villa 1</p>
+                </div>
+                <div class="hotel-links">
+                  <a class="button button-primary" id="hotelDirectionsLink" href="https://www.google.com/maps/dir/?api=1&amp;origin=Holiday%20Inn%20Express%20Augsburg%2C%20Nagahama-Allee%2077%2C%2086153%20Augsburg&amp;destination=adesso%20SE%2C%20Provinostra%C3%9Fe%2052%2C%2086153%20Augsburg&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">In Google Maps öffnen</a>
+                  <a class="button hotel-site-link" id="hotelWebsiteLink" href="https://www.ihg.com/holidayinnexpress/hotels/de/de/augsburg/mucau/hoteldetail" target="_blank" rel="noopener noreferrer">Hotel-Website</a>
+                </div>
               </div>
-              <div class="hotel-links">
-                <a class="button button-primary" id="hotelDirectionsLink" href="https://www.google.com/maps/dir/?api=1&amp;origin=Holiday%20Inn%20Express%20Augsburg%2C%20Nagahama-Allee%2077%2C%2086153%20Augsburg&amp;destination=adesso%20SE%2C%20Provinostra%C3%9Fe%2052%2C%2086153%20Augsburg&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">In Google Maps öffnen</a>
-                <a class="button hotel-site-link" id="hotelWebsiteLink" href="https://www.ihg.com/holidayinnexpress/hotels/de/de/augsburg/mucau/hoteldetail" target="_blank" rel="noopener noreferrer">Hotel-Website</a>
+              <div class="hotel-map">
+                <iframe id="hotelMap" title="Google Maps – Fußweg vom Holiday Inn Express Augsburg zur adesso Geschäftsstelle" src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d4970.183833153168!2d10.90791519705544!3d48.36504468507792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x479e97f96c7eb0b7%3A0xf07e813b4989acb5!2sHoliday%20Inn%20Express%20Augsburg%2C%20Nagahama-Allee%2077%2C%2086153%20Augsburg!3m2!1d48.3652042!2d10.9111428!4m5!1s0x479e9712ef710b73%3A0xd4176022703fcddd!2sadesso%20SE%2C%20Martini%20Park%2C%20Provinostr.%2052%2FVilla%201%2C%2086153%20Augsburg!3m2!1d48.3640402!2d10.916080299999999!5e1!3m2!1sde!2sde!4v1790768676153!5m2!1sde!2sde" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
               </div>
-            </div>
-            <div class="hotel-map">
-              <iframe id="hotelMap" title="Google Maps – Fußweg vom Holiday Inn Express Augsburg zur adesso Geschäftsstelle" src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d4970.183833153168!2d10.90791519705544!3d48.36504468507792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x479e97f96c7eb0b7%3A0xf07e813b4989acb5!2sHoliday%20Inn%20Express%20Augsburg%2C%20Nagahama-Allee%2077%2C%2086153%20Augsburg!3m2!1d48.3652042!2d10.9111428!4m5!1s0x479e9712ef710b73%3A0xd4176022703fcddd!2sadesso%20SE%2C%20Martini%20Park%2C%20Provinostr.%2052%2FVilla%201%2C%2086153%20Augsburg!3m2!1d48.3640402!2d10.916080299999999!5e1!3m2!1sde!2sde!4v1790768676153!5m2!1sde!2sde" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
 
-          <p class="hotel-note">Gehzeiten und Strecken sind Richtwerte laut Google Maps, geprüft am 30.09.2026. Preise und Verfügbarkeit für den 23.–27. November bitte direkt beim Hotel prüfen. Hotelinfos: <a href="https://www.ihg.com/holidayinnexpress/hotels/de/de/augsburg/mucau/hoteldetail" target="_blank" rel="noopener noreferrer">Holiday Inn Express</a>, <a href="https://www.jakoberhof.de/" target="_blank" rel="noopener noreferrer">Jakoberhof</a>, <a href="https://www.hotelmaximilians.com/" target="_blank" rel="noopener noreferrer">Maximilian’s</a>.</p>
         </div>
       </section>
 
@@ -1590,6 +1882,35 @@
               <button class="poll-option" type="button" data-votes="3"><span>Überraschung vor Ort</span><span class="vote-count">3</span></button>
             </div>
           </article>
+        </div>
+      </section>
+
+      <section class="section food-guide" id="essen" aria-labelledby="food-title">
+        <div class="section-inner">
+          <div class="section-heading reveal">
+            <p class="section-number">05 · Essen &amp; Afterwork</p>
+            <div>
+              <h2 id="food-title">Gute Adressen.<br />Direkt von nebenan.</h2>
+              <p class="section-intro">Wo gehen die Augsburger Kolleg:innen gerne hin? Hier kommen ihre Tipps für die Mittagspause, ein gemeinsames Abendessen und den Ausklang danach. Klickt auf eine Karte und entdeckt mehr.</p>
+            </div>
+          </div>
+          <div class="food-toolbar">
+            <div class="food-filters" role="group" aria-label="Restauranttipps filtern">
+              <button class="food-filter" type="button" data-food-filter="all" aria-pressed="true" aria-controls="foodGrid">Alle</button>
+              <button class="food-filter" type="button" data-food-filter="lunch" aria-pressed="false" aria-controls="foodGrid">Mittagessen</button>
+              <button class="food-filter" type="button" data-food-filter="dinner" aria-pressed="false" aria-controls="foodGrid">Abendessen</button>
+              <button class="food-filter" type="button" data-food-filter="bar" aria-pressed="false" aria-controls="foodGrid">Bars</button>
+            </div>
+            <p class="food-count" id="foodCount" role="status" aria-live="polite"></p>
+          </div>
+          <div class="food-grid" id="foodGrid">
+            <article class="food-detail" id="foodDetails" aria-labelledby="foodDetailTitle" tabindex="-1" hidden></article>
+          </div>
+          <noscript>
+            <p>Bitte aktiviert JavaScript für die aufklappbaren Restauranttipps. Die Websites findet ihr auch direkt hier:</p>
+            <p><a href="https://www.azsteakas.de/">Azsteakas</a> · <a href="https://www.block-house.de/restaurants/augsburg/ulrichsplatz/">BLOCK HOUSE</a> · <a href="https://joeslaperla.de/">Joe’s La Perla</a> · <a href="https://www.n8stallung.de/">N8Stallung</a> · <a href="https://kaelberhalle.de/">Kälberhalle</a> · <a href="https://nuno-augsburg.de/">nunó</a> · <a href="https://bodega-labomba.de/">Bodega La Bomba</a> · <a href="https://www.millemigliaaugsburg.de/">Mille Miglia</a> · <a href="https://www.enchilada.de/restaurants/augsburg/">Enchilada</a> · <a href="https://startpage.the-coco.de/">CôCô</a> · <a href="https://www.ratskeller-augsburg.de/">Ratskeller</a> · <a href="https://www.goldenglimmer.de/">Golden Glimmer</a> · <a href="https://www.bar3m.de/">Bar 3M</a></p>
+          </noscript>
+          <p class="food-note">Die Empfehlungen stammen von den Augsburger Kolleg:innen. Speisen und Öffnungszeiten: offizielle Websites, geprüft am 14.10.2026. Karten können wechseln – für unsere Woche vom 23.–27. November bitte Zeiten, Speisen und Gruppenplätze direkt beim Lokal bestätigen. Fotos werden erst beim Öffnen einer Karte von der jeweiligen Website geladen. Die Bildfreigaben für eine Veröffentlichung sind noch zu klären.</p>
         </div>
       </section>
 
@@ -1643,6 +1964,7 @@
       </div>
     </footer>
 
+    <script src="./food-guide.js" defer></script>
     <script>
       const eventStart = new Date("2026-11-23T09:00:00+01:00");
       const eventEnd = new Date("2026-11-27T18:00:00+01:00");
@@ -1724,65 +2046,6 @@
 
       document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
 
-      const hotelData = {
-        express: {
-          name: "Holiday Inn Express Augsburg",
-          origin: "Holiday Inn Express Augsburg, Nagahama-Allee 77, 86153 Augsburg",
-          summary: "Ca. 8 Minuten · 550 m zu Fuß · Ziel: Provinostraße 52, Villa 1",
-          website: "https://www.ihg.com/holidayinnexpress/hotels/de/de/augsburg/mucau/hoteldetail",
-          embed: "https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d4970.183833153168!2d10.90791519705544!3d48.36504468507792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x479e97f96c7eb0b7%3A0xf07e813b4989acb5!2sHoliday%20Inn%20Express%20Augsburg%2C%20Nagahama-Allee%2077%2C%2086153%20Augsburg!3m2!1d48.3652042!2d10.9111428!4m5!1s0x479e9712ef710b73%3A0xd4176022703fcddd!2sadesso%20SE%2C%20Martini%20Park%2C%20Provinostr.%2052%2FVilla%201%2C%2086153%20Augsburg!3m2!1d48.3640402!2d10.916080299999999!5e1!3m2!1sde!2sde!4v1790768676153!5m2!1sde!2sde"
-        },
-        jakoberhof: {
-          name: "Hotel Jakoberhof",
-          origin: "Hotel Jakoberhof, Jakoberstraße 41, 86152 Augsburg",
-          summary: "Ca. 19 Minuten · 1,3 km zu Fuß · Ziel: Provinostraße 52, Villa 1",
-          website: "https://www.jakoberhof.de/",
-          embed: "https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d9939.954768838814!2d10.90005552085899!3d48.367160240313005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x479ebd57c96e235d%3A0x8ddee807849d3220!2sHotel%20Jakoberhof%2C%20Jakoberstra%C3%9Fe%2041%2C%2086152%20Augsburg!3m2!1d48.3700754!2d10.904457299999999!4m5!1s0x479e9712ef710b73%3A0xd4176022703fcddd!2sadesso%20SE%2C%20Martini%20Park%2C%20Provinostr.%2052%2FVilla%201%2C%2086153%20Augsburg!3m2!1d48.3640402!2d10.916080299999999!5e1!3m2!1sde!2sde!4v1790768794939!5m2!1sde!2sde"
-        },
-        maximilians: {
-          name: "Hotel Maximilian’s",
-          origin: "Hotel Maximilian's, Maximilianstraße 40, 86150 Augsburg",
-          summary: "Ca. 21 Minuten · 1,5 km zu Fuß · Ziel: Provinostraße 52, Villa 1",
-          website: "https://www.hotelmaximilians.com/",
-          embed: "https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d9940.71288514422!2d10.897389370855429!3d48.36327584030565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x479ebd546761609f%3A0x9cfede66c914e9c3!2sHotel%20Maximilian's%2C%20Maximilianstra%C3%9Fe%2040%2C%2086150%20Augsburg!3m2!1d48.3654948!2d10.899111099999999!4m5!1s0x479e9712ef710b73%3A0xd4176022703fcddd!2sadesso%20SE%2C%20Martini%20Park%2C%20Provinostr.%2052%2FVilla%201%2C%2086153%20Augsburg!3m2!1d48.3640402!2d10.916080299999999!5e1!3m2!1sde!2sde!4v1790768870608!5m2!1sde!2sde"
-        }
-      };
-      const hotelCards = [...document.querySelectorAll(".hotel-card")];
-      const hotelMap = document.querySelector("#hotelMap");
-      let selectedHotel = "express";
-
-      hotelCards.forEach((card) => {
-        card.addEventListener("click", () => {
-          const key = card.dataset.hotel;
-          const hasChanged = key !== selectedHotel;
-          selectedHotel = key;
-          const hotel = hotelData[key];
-          hotelCards.forEach((option) => {
-            const isSelected = option === card;
-            option.setAttribute("aria-pressed", String(isSelected));
-            option.querySelector(".hotel-card-state").textContent = isSelected ? "Route ausgewählt" : "Route anzeigen";
-          });
-          document.querySelector("#hotelRouteTitle").textContent = `${hotel.name} → adesso`;
-          document.querySelector("#hotelRouteSummary").textContent = hotel.summary;
-          document.querySelector("#hotelWebsiteLink").href = hotel.website;
-          const directions = new URL("https://www.google.com/maps/dir/");
-          directions.search = new URLSearchParams({
-            api: "1",
-            origin: hotel.origin,
-            destination: "adesso SE, Provinostraße 52, 86153 Augsburg",
-            travelmode: "walking"
-          }).toString();
-          document.querySelector("#hotelDirectionsLink").href = directions.href;
-          hotelMap.title = `Google Maps – Fußweg vom ${hotel.name} zur adesso Geschäftsstelle`;
-          if (hasChanged) {
-            hotelMap.loading = "eager";
-            hotelMap.src = hotel.embed;
-          }
-          if (window.matchMedia("(max-width: 850px)").matches) {
-            document.querySelector(".hotel-route").scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth", block: "start" });
-          }
-        });
-      });
       const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
       const hero = document.querySelector(".hero");
       const scrollProgress = document.querySelector("#scrollProgress");

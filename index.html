@@ -577,6 +577,112 @@
         font-size: 1.05rem;
       }
 
+      .orientation {
+        margin-top: 1.5rem;
+        padding: clamp(1.25rem, 3.5vw, 2.5rem);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        background: var(--paper);
+      }
+
+      .orientation .section-number {
+        margin-bottom: 0.6rem;
+      }
+
+      .orientation h3 {
+        margin-bottom: 0.65rem;
+        font-size: clamp(1.55rem, 3vw, 2.3rem);
+        line-height: 1.1;
+        letter-spacing: -0.035em;
+      }
+
+      .orientation-intro {
+        max-width: 68ch;
+        margin-bottom: 1.3rem;
+        color: var(--muted);
+      }
+
+      .orientation-key {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.65rem;
+        padding: 0.45rem 0.85rem;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--white);
+        font-weight: 750;
+        font-size: 0.9rem;
+      }
+
+      .orientation-key::before {
+        content: "";
+        width: 0.85rem;
+        height: 0.85rem;
+        flex: none;
+        border-radius: 0.15rem;
+        background: #000;
+      }
+
+      .orientation-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .orientation-figure {
+        min-width: 0;
+        margin: 0;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        background: var(--white);
+      }
+
+      .orientation-figure-wide {
+        grid-column: 1 / -1;
+      }
+
+      .orientation-image {
+        display: block;
+        padding: 0.6rem;
+      }
+
+      .orientation-image:focus-visible {
+        outline: 3px solid var(--adesso-blue);
+        outline-offset: -4px;
+      }
+
+      .orientation-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .orientation-figure-portrait img {
+        height: clamp(18rem, 43vw, 30rem);
+        object-fit: contain;
+      }
+
+      .orientation-figure figcaption {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 0.5rem 1rem;
+        padding: 0.85rem 1rem;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .orientation-figure figcaption strong {
+        color: var(--ink);
+      }
+
+      @media (max-width: 650px) {
+        .orientation-grid { grid-template-columns: 1fr; }
+        .orientation-figure-portrait img { height: auto; }
+      }
+
       .arrival-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -1776,6 +1882,19 @@
             </figcaption>
           </figure>
 
+          <article class="orientation" id="lageplan" aria-labelledby="lageplan-title">
+            <p class="section-number">Orientierung vor Ort</p>
+            <h3 id="lageplan-title">Lageplan der Geschäftsstelle</h3>
+            <p class="orientation-intro">So findet ihr die für unser Work &amp; Meet gebuchten Plätze in Villa 1.</p>
+            <p class="orientation-key">Schwarz markiert = für uns gebucht</p>
+            <figure class="orientation-figure">
+              <a class="orientation-image" href="./assets/anreise/lageplan-augsburg.png" target="_blank" rel="noopener noreferrer" aria-label="Lageplan in Originalgröße öffnen (neuer Tab)">
+                <img src="./assets/anreise/lageplan-augsburg.png" width="1096" height="676" loading="lazy" decoding="async" alt="Grundriss der adesso Geschäftsstelle Augsburg. Die für das Work &amp; Meet gebuchten Plätze sind schwarz markiert.">
+              </a>
+              <figcaption><strong>Villa 1 · Gebuchte Plätze</strong><span>Bild anklicken für die Originalgröße ↗</span></figcaption>
+            </figure>
+          </article>
+
           <article class="interaction-card dispersed-interaction ready-experience reveal" id="ready-check">
             <span class="card-kicker">Ready-Check</span>
             <h3>Schon alles für Augsburg geklärt?</h3>
@@ -1866,9 +1985,35 @@
             </article>
             <article class="arrival-card reveal">
               <h3>Mit dem Auto</h3>
-              <p>Über die Berliner Allee und Amagasaki-Allee in Richtung Provinostraße fahren. Parkmöglichkeiten gibt es neben und hinter Villa 1.</p>
+              <p>Über die Berliner Allee und Amagasaki-Allee in Richtung Provinostraße fahren. Die <a href="#parkplaetze">Parkplatzübersicht</a> zeigt die Plätze rund um Villa 1 und die Alternative am Hanreibach.</p>
             </article>
           </div>
+
+          <article class="orientation" id="parkplaetze" aria-labelledby="parkplaetze-title">
+            <p class="section-number">Anreise mit dem Auto</p>
+            <h3 id="parkplaetze-title">Parken im Martini-Park</h3>
+            <p class="orientation-intro">Laut Skizze gibt es rund um Villa 1 <strong>7 reguläre Stellplätze und 3 für E-Autos</strong>. Vier weitere Plätze sind im hinteren Teil des Martini-Parks am Hanreibach eingezeichnet. Die Zufahrt dorthin ist laut Übersicht über die <strong>Reichenberger Straße</strong> oder die <strong>Schäfflerbachstraße</strong> möglich.</p>
+            <div class="orientation-grid">
+              <figure class="orientation-figure orientation-figure-portrait">
+                <a class="orientation-image" href="./assets/anreise/parkplaetze-villa-1.png" target="_blank" rel="noopener noreferrer" aria-label="Parkskizze für Villa 1 in Originalgröße öffnen (neuer Tab)">
+                  <img src="./assets/anreise/parkplaetze-villa-1.png" width="516" height="717" loading="lazy" decoding="async" alt="Skizze der Stellplätze rund um Villa 1. Die Legende nennt 7 reguläre Stellplätze und 3 für E-Autos.">
+                </a>
+                <figcaption><strong>Stellplätze rund um Villa 1</strong><span>Skizze · Bild anklicken ↗</span></figcaption>
+              </figure>
+              <figure class="orientation-figure orientation-figure-portrait">
+                <a class="orientation-image" href="./assets/anreise/parkplaetze-satellit.png" target="_blank" rel="noopener noreferrer" aria-label="Satellitenkarte für Villa 1 in Originalgröße öffnen (neuer Tab)">
+                  <img src="./assets/anreise/parkplaetze-satellit.png" width="631" height="723" loading="lazy" decoding="async" alt="Satellitenkarte mit Markierungen für die adesso Geschäftsstelle, die Zufahrt und die Stellplätze rund um Villa 1.">
+                </a>
+                <figcaption><strong>Zufahrt und Stellplätze im Luftbild</strong><span>Satellitenkarte · Bild anklicken ↗</span></figcaption>
+              </figure>
+              <figure class="orientation-figure orientation-figure-wide">
+                <a class="orientation-image" href="./assets/anreise/parkplaetze-hanreibach.png" target="_blank" rel="noopener noreferrer" aria-label="Parkübersicht am Hanreibach in Originalgröße öffnen (neuer Tab)">
+                  <img src="./assets/anreise/parkplaetze-hanreibach.png" width="1227" height="686" loading="lazy" decoding="async" alt="Skizze und Satellitenkarte der vier zusätzlichen Stellplätze am Hanreibach mit Zufahrten über die Reichenberger Straße und die Schäfflerbachstraße.">
+                </a>
+                <figcaption><strong>Alternative: 4 Stellplätze am Hanreibach</strong><span>Skizze und Zufahrten · Bild anklicken ↗</span></figcaption>
+              </figure>
+            </div>
+          </article>
 
           <article class="interaction-card dispersed-interaction poll-experience reveal tilt-card">
             <span class="card-kicker">Afterwork-Voting</span>

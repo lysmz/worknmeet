@@ -5,8 +5,18 @@ import { createReadStream } from "node:fs";
 const files = new Map([
   ["/", "index.html"],
   ["/index.html", "index.html"],
-  ["/food-guide.js", "food-guide.js"]
+  ["/food-guide.js", "food-guide.js"],
+  ["/assets/anreise/lageplan-augsburg.png", "assets/anreise/lageplan-augsburg.png"],
+  ["/assets/anreise/parkplaetze-villa-1.png", "assets/anreise/parkplaetze-villa-1.png"],
+  ["/assets/anreise/parkplaetze-satellit.png", "assets/anreise/parkplaetze-satellit.png"],
+  ["/assets/anreise/parkplaetze-hanreibach.png", "assets/anreise/parkplaetze-hanreibach.png"]
 ]);
+
+const contentTypes = {
+  html: "text/html; charset=utf-8",
+  js: "text/javascript; charset=utf-8",
+  png: "image/png"
+};
 
 const server = http.createServer((request, response) => {
   const file = files.get(new URL(request.url, "http://127.0.0.1").pathname);
@@ -20,7 +30,7 @@ const server = http.createServer((request, response) => {
     if (!response.headersSent) response.writeHead(500);
     response.end("Site file unavailable");
   });
-  response.setHeader("Content-Type", file.endsWith(".js") ? "text/javascript; charset=utf-8" : "text/html; charset=utf-8");
+  response.setHeader("Content-Type", contentTypes[file.split(".").at(-1)]);
   response.setHeader("Cache-Control", "no-store");
   stream.pipe(response);
 });

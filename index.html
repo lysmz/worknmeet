@@ -1171,6 +1171,59 @@
         margin-top: clamp(2rem, 5vw, 4.5rem);
       }
 
+      .playlist-card {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 1fr);
+        align-items: center;
+        gap: clamp(1.5rem, 4vw, 3rem);
+      }
+
+      .playlist-copy,
+      .playlist-player {
+        min-width: 0;
+      }
+
+      .playlist-copy h3 {
+        max-width: 16ch;
+        margin-bottom: 1rem;
+        font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      }
+
+      .playlist-copy > p {
+        color: #b8c4d4;
+      }
+
+      .playlist-copy .playlist-note {
+        margin: 1rem 0 0;
+        font-size: 0.875rem;
+      }
+
+      .playlist-player iframe {
+        display: block;
+        width: 100%;
+        height: 352px;
+        border: 0;
+        border-radius: 12px;
+        background: #181818;
+      }
+
+      .playlist-player > p {
+        margin: 0.75rem 0 0;
+        color: #b8c4d4;
+        font-size: 0.8rem;
+      }
+
+      @media (max-width: 850px) {
+        .playlist-card { grid-template-columns: 1fr; }
+      }
+
+      @media (max-width: 600px) {
+        .playlist-card { padding: 1.5rem 0; margin-inline: -0.5rem; }
+        .playlist-copy { padding: 0 1.25rem; }
+        .playlist-player { padding: 0 2px; }
+        .playlist-player > p { padding: 0 1.1rem; }
+      }
+
       .ready-experience {
         background:
           radial-gradient(circle at 88% 15%, rgba(200, 182, 0, 0.2), transparent 24rem),
@@ -1827,6 +1880,20 @@
               <strong>Eine gemeinsame Arbeits- und Teamwoche</strong>
             </div>
           </div>
+
+          <article class="interaction-card dispersed-interaction playlist-card" id="playlist" aria-labelledby="playlist-title">
+            <div class="playlist-copy">
+              <span class="card-kicker">Spotify · Team-Playlist</span>
+              <h3 id="playlist-title">Eine Woche.<br />Euer Mix.</h3>
+              <p>Welche Songs dürfen beim Work &amp; Meet nicht fehlen? Fügt eure Lieblingslieder zur gemeinsamen Playlist hinzu und gestaltet den Soundtrack für unsere Woche mit.</p>
+              <a class="button button-primary" id="spotifyPlaylistLink" href="https://open.spotify.com/playlist/17XAuHesssymCa6FadSygb?utm_source=native-share-menu&amp;pi=xEkPFGaZQyuQa&amp;pt_success=1" target="_blank" rel="noopener noreferrer">Playlist in Spotify öffnen ↗</a>
+              <p class="playlist-note">Songs fügt ihr direkt in Spotify hinzu. Dafür müsst ihr angemeldet und als Mitwirkende freigegeben sein. Fehlt die Möglichkeit zum Hinzufügen, fragt beim Playlist-Verantwortlichen nach einem aktuellen Einladungslink.</p>
+            </div>
+            <div class="playlist-player">
+              <iframe id="spotifyPlaylist" title="Spotify – gemeinsame Work-&amp;-Meet-Playlist" src="https://open.spotify.com/embed/playlist/17XAuHesssymCa6FadSygb" width="100%" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <p>Player lädt nicht? Nutzt den Button „Playlist in Spotify öffnen“. Beim Laden des Players wird eine Verbindung zu Spotify hergestellt.</p>
+            </div>
+          </article>
 
         </div>
       </section>
